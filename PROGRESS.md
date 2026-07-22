@@ -26,3 +26,13 @@ Verification:
 - pr-smoke.yml: Added --with-deps to playwright install, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block
 - nightly-regression.yml: Applied same fixes (added --with-deps, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block); retained existing allure-report upload (v3, if: always())
 Notes: These changes address potential CI failures due to missing OS-level browser dependencies, improve performance via caching, and enhance debuggability by preserving test artifacts on failure. Both workflows are ready to be tested via a push to GitHub.
+## Step 22 — Enable GitHub Pages and verify report deployment — DONE
+
+## Step 23 — Add latest/ alias for reports in workflow and update README — DONE
+Files touched: .github/workflows/nightly-regression.yml, README.md
+Verification: 
+- Workflow runs successfully (see latest run)
+- Reports accessible at stable URLs:
+    * Allure: https://shoaibahmed.github.io/argus-qa-framework/allure-report/latest/index.html
+    * Playwright: https://shoaibahmed.github.io/argus-qa-framework/playwright-report/latest/index.html
+Notes: Added two extra deployment steps to publish reports to a fixed 'latest/' folder in GitHub Pages, alongside the run-numbered folders. Updated README to document the stable links.
