@@ -59,7 +59,9 @@ jobs:
       - name: Add summary
         run: |
           echo "## Smoke Test Reports" >> $GITHUB_STEP_SUMMARY
-          echo "| Report Type | URL (Run) | URL (Run: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/${{ github.run_number }}/allure-report/index.html | Latest: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/allure-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
+          echo "| Report Type | URL (Run) | URL (Latest) |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------------|-----------|--------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Allure Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/${{ github.run_number }}/allure-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/allure-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
           echo "| Playwright Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/${{ github.run_number }}/playwright-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-smoke/playwright-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
 
       - uses: actions/upload-artifact@v4
