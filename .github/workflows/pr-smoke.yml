@@ -1,0 +1,30 @@
+name: PR Smoke Tests
+
+on:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  smoke-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - run: npm ci
+        name: Install dependencies
+
+      - run: npx playwright install
+        name: Install Playwright browsers
+
+      - run: npx playwright test --grep @smoke
+        name: Run smoke tests
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+          BASE_URL: ${{ secrets.BASE_URL || 'https://automationexercise.com' }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}

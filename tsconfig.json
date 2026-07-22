@@ -1,0 +1,69 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+
+  "compilerOptions": {
+    // Level
+    "target": "es2022", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+
+    // Modules
+    "module": "commonjs", // Changed from nodenext to commonjs for consistency with require usage
+    "rootDir": "./",
+    "allowJs": true,
+    // "inlineSources": true,
+    // "removeComments": true,
+    // "noEmit": true, // ← This is a good idea for .ts.buildinfo to avoid cluttering your repo with unnecessary .js files
+
+    // Strict
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": false,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+
+    // Module Resolution
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+
+    // Output
+    // "removeComments": true,
+    "noEmit": false,
+    // "outDir": "./dist",
+
+    // Emit
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": false,
+    "noEmitHelpers": false,
+    "noEmitOnError": true,
+
+    // Interop Constraints
+    "isolatedModules": true,
+    // "noEmit": true,
+
+    // Language and Environment
+    "lib": ["es2022"]
+
+    // Complete
+    /*
+    // Completeness
+    "skipDefaultLibCheck": true,
+    */
+  }
+}
