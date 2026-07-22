@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","9141","should complete a user login, search for product, add to cart, and proceed to checkout","alerted","2026-07-22","passed","2026-07-22","Checkout Flow (@smoke)","ui/checkout-flow.spec.ts","",""
+"","9696","should complete a user login, search for product, add to cart, and proceed to checkout","unauthenticated","2026-07-22","passed","2026-07-22","Checkout Flow (@smoke)","ui/checkout-flow.spec.ts","",""
