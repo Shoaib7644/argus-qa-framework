@@ -24,5 +24,5 @@ Notes: Added badges for CI status and license, added Mermaid architecture diagra
 Files touched: .github/workflows/pr-smoke.yml, .github/workflows/nightly-regression.yml
 Verification: 
 - pr-smoke.yml: Added --with-deps to playwright install, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block
-- nightly-regression.yml: Applied same fixes plus preserved existing allure-report upload
-Notes: These changes address potential CI failures due to missing OS-level browser dependencies, improve performance via caching, and enhance debuggability by preserving test artifacts on failure. The workflows are ready to be tested via a push to GitHub.
+- nightly-regression.yml: Applied same fixes (added --with-deps, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block); retained existing allure-report upload (v3, if: always())
+Notes: These changes address potential CI failures due to missing OS-level browser dependencies, improve performance via caching, and enhance debuggability by preserving test artifacts on failure. Both workflows are ready to be tested via a push to GitHub.
