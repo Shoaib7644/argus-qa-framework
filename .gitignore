@@ -5,3 +5,9 @@ test-results/
 playwright-report/
 allure-results/
 .idea/
+.claude/
+.idea/
+allure-results/
+playwright-report/
+test-results/
+*.bak
