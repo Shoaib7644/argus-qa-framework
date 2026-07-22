@@ -4,8 +4,8 @@ An enterprise-grade hybrid API + UI test automation framework built in Playwrigh
 
 ## 🔖 Badges
 
-![CI - PR Smoke](https://github.com/shoaibahmed/argus-qa-framework/actions/workflows/pr-smoke.yml/badge.svg)
-![CI - Nightly Regression](https://github.com/shoaibahmed/argus-qa-framework/actions/workflows/nightly-regression.yml/badge.svg)
+![CI - PR Smoke](https://github.com/Shoaib7644/argus-qa-framework/actions/workflows/pr-smoke.yml/badge.svg)
+![CI - Nightly Regression](https://github.com/Shoaib7644/argus-qa-framework/actions/workflows/nightly-regression.yml/badge.svg)
 ![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
 
 ## 🎯 Project Purpose
@@ -19,8 +19,8 @@ graph TD
     A[Global Setup] -->|login via API| B(Browser Context)
     B -->|storageState| C[Authenticated Tests]
     B -->|storageState| D[Unauthenticated Tests]
-    C --> E[API Layer (Zod Schemas)]
-    C --> F[Fixtures (test.extend)]
+    C --> E[API Layer - Zod Schemas]
+    C --> F[Fixtures - test.extend]
     F --> G[Page Object Model]
     G --> H[UI Tests]
     E --> H
@@ -248,17 +248,15 @@ npx playwright install
   - Generates Allure HTML report
   - Deploys both Allure and Playwright reports to GitHub Pages
   - Reports are available under:
-      - Run-specific: `https://shoaibahmed.github.io/argus-qa-framework/<run_number>/[allure-report|playwright-report]/index.html`
-      - Latest: `https://shoaibahmed.github.io/argus-qa-framework/[allure-report|playwright-report]/latest/index.html`
+      - Run-specific: `https://shoaib7644.github.io/argus-qa-framework/<run_number>/[allure-report|playwright-report]/index.html`
+      - Latest: `https://shoaib7644.github.io/argus-qa-framework/[allure-report|playwright-report]/latest/index.html`
   - Uploads Allure results as an artifact named `allure-report` (retained for 30 days)
   - Uploads Playwright report as an artifact on failure (retained for 30 days)
 - **Artifact Location**: After a workflow run, navigate to Actions → [workflow run] → Artifacts → `allure-report` or `playwright-report` to download and view locally
 - **GitHub Pages**: The latest reports are always available at:
-        - Allure: `https://shoaibahmed.github.io/argus-qa-framework/allure-report/latest/index.html`
-        - Playwright: `https://shoaibahmed.github.io/argus-qa-framework/playwright-report/latest/index.html`
+        - Allure: `https://shoaib7644.github.io/argus-qa-framework/allure-report/latest/index.html`
+        - Playwright: `https://shoaib7644.github.io/argus-qa-framework/playwright-report/latest/index.html`
 ## ⚠️ Known Limitations
-
-Per PRODUCT.md's explicit out-of-scope definition, this framework intentionally omits:
 
 - **No BDD/Cucumber/Gherkin layer** - Focuses on pure TypeScript/Playwright for cleaner code and better debugging
 - **No visual regression testing** - Deliberately excluded to maintain focus on core API/UI validation skills
