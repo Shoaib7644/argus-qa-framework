@@ -27,6 +27,15 @@ Verification:
 - nightly-regression.yml: Applied same fixes (added --with-deps, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block); retained existing allure-report upload (v3, if: always())
 Notes: These changes address potential CI failures due to missing OS-level browser dependencies, improve performance via caching, and enhance debuggability by preserving test artifacts on failure. Both workflows are ready to be tested via a push to GitHub.
 ## Step 22 — Enable GitHub Pages and verify report deployment — DONE
+Files touched: .github/workflows/nightly-regression.yml, package.json, package-lock.json
+Verification:
+- Enabled GitHub Pages source to gh-pages branch (via API).
+- Workflow run #29902619566 succeeded (all steps passed).
+- Reports accessible at:
+    * Allure: https://shoaib7644.github.io/argus-qa-framework/6/allure-report/index.html
+    * Playwright: https://shoaib7644.github.io/argus-qa-framework/6/playwright-report/index.html
+- GitHub Pages site status: built.
+Notes: Added allure-commandline as dev dependency to allow npx allure generate. Corrected upload-artifact action from v3 to v4 to avoid deprecation errors. Enabled GitHub Pages for the repository; reports are published under run-numbered folders and also (after step 23) under latest/.
 
 ## Step 23 — Add latest/ alias for reports in workflow and update README — DONE
 Files touched: .github/workflows/nightly-regression.yml, README.md
