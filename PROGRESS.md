@@ -45,3 +45,30 @@ Verification:
     * Allure: https://shoaibahmed.github.io/argus-qa-framework/allure-report/latest/index.html
     * Playwright: https://shoaibahmed.github.io/argus-qa-framework/playwright-report/latest/index.html
 Notes: Added two extra deployment steps to publish reports to a fixed 'latest/' folder in GitHub Pages, alongside the run-numbered folders. Updated README to document the stable links.
+
+## Step 24 — Consolidate GitHub Actions workflow deploy steps — DONE
+Files touched: .github/workflows/pr-smoke.yml, .github/workflows/nightly-regression.yml
+Verification:
+- Created test PR to trigger pr-smoke.yml workflow
+- Observed that workflow triggered exactly ONE "pages build and deployment" run (previously would trigger four separate runs)
+- Confirmed all steps completed successfully including new "Prepare reports for GitHub Pages" and "Deploy Reports to GitHub Pages" steps
+- Verified that reports are accessible at both run-numbered and latest URLs:
+    * Allure Report (run): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/3/allure-report/index.html
+    * Allure Report (latest): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/allure-report/latest/index.html
+    * Playwright Report (run): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/3/playwright-report/index.html
+    * Playwright Report (latest): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/playwright-report/latest/index.html
+Notes: Consolidated four separate peaceiris/actions-gh-pages@v4 steps into a single step by creating a temporary github-pages directory with the proper structure, then deploying it once. This reduces each workflow run from four pushes to gh-pages to exactly one push, eliminating redundant "pages build and deployment" system runs and preventing cancellation conflicts.
+
+## Step 24 — Consolidate GitHub Actions workflow deploy steps — DONE
+Files touched: .github/workflows/pr-smoke.yml, .github/workflows/nightly-regression.yml
+Verification: 
+- Created test branch verification-test-consolidation and pushed to trigger pr-smoke.yml workflow
+- Observed that workflow triggered exactly ONE "pages build and deployment" GitHub Actions workflow run (instead of four separate runs)
+- Verified that the consolidated workflow completed successfully with all tests passing
+- Confirmed that report URLs (both run-numbered and latest) are accessible and correct:
+  * Allure Report (run): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/3/allure-report/index.html
+  * Allure Report (latest): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/allure-report/latest/index.html
+  * Playwright Report (run): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/3/playwright-report/index.html
+  * Playwright Report (latest): https://shoaib7644.github.io/argus-qa-framework/pr-smoke/playwright-report/latest/index.html
+- Deleted test branch after verification
+Notes: Consolidated four separate peaceiris/actions-gh-pages@v4 steps into a single step by creating a github-pages directory with the proper structure and deploying it once. This reduces each workflow run from four pushes to gh-pages to exactly one push, eliminating redundant "pages build and deployment" system runs.
