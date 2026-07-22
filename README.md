@@ -195,6 +195,31 @@ TEST_USER_PASSWORD=your-secure-password
 
 **Note**: Never commit actual credentials to version control. The `.env` file is gitignored, and CI environments should use secrets management.
 
+## 🔧 Setup Instructions
+
+Follow these exact steps to get started:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/argus-qa-framework.git
+cd argus-qa-framework
+
+# 2. Install dependencies
+npm ci
+
+# 3. Create environment file from template
+cp .env.example .env
+
+# 4. Add your test credentials to .env (never commit this file)
+#    Get credentials from test environment or create test account at automationexercise.com
+echo "BASE_URL=https://automationexercise.com" >> .env
+echo "TEST_USER_EMAIL=your-test-email@example.com" >> .env
+echo "TEST_USER_PASSWORD=your-secure-password" >> .env
+
+# 5. Install Playwright browsers
+npx playwright install
+```
+
 ## 🏗️ Design Principles
 
 - **Type Safety**: Strict TypeScript mode with Zod validation for runtime safety
@@ -229,7 +254,7 @@ Per PRODUCT.md's explicit out-of-scope definition, this framework intentionally 
 
 - **No BDD/Cucumber/Gherkin layer** - Focuses on pure TypeScript/Playwright for cleaner code and better debugging
 - **No visual regression testing** - Deliberately excluded to maintain focus on core API/UI validation skills
-- **No accessibility (axe-core accessibility testing** - Outside scope for this portfolio piece responsive test suite (axe-core)** - Not included to avoid scope creep beyond core testing competencies
+- **No accessibility (axe-core) testing** - Outside scope for this portfolio piece - Not included to avoid scope creep beyond core testing competencies
 - **No mobile emulation/responsive test suite** - Limited to desktop Chromium and Firefox as specified
 - **Secondary site usage constraints**: The-internet.herokuapp.com is used ONLY for 2-4 targeted edge-case tests (iframe, multi-tab, dynamic loading) via BasePage helpers - no full page objects or broad coverage
 - **Test data limited to `@faker-js/faker`** - No external data seeding or database fixtures

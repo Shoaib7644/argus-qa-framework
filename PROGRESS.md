@@ -19,3 +19,10 @@ Notes: Changed HTML reporter outputFolder from 'test-results/html' to 'playwrigh
 Files touched: README.md
 Verification: README now includes all required sections: badges, architecture diagram, precise setup instructions, enhanced CI/CD details, known limitations per PRODUCT.md, and verification steps
 Notes: Added badges for CI status and license, added Mermaid architecture diagram showing API layer → fixtures → UI layer → tests with storageState integration, expanded setup instructions with exact git clone through npx playwright install steps, clarified CI/CD sections to detail what each workflow does and where to find Allure artifacts, added explicit "Known Limitations" section quoting PRODUCT.md's out-of-scope items, and added "Verification" section with reproducible commands for reviewers to validate the Definition of Done.
+
+## Step 21 — Fix GitHub Actions workflows — DONE
+Files touched: .github/workflows/pr-smoke.yml, .github/workflows/nightly-regression.yml
+Verification: 
+- pr-smoke.yml: Added --with-deps to playwright install, moved PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD to npm ci step, added failure artifact upload for playwright-report/, updated actions to @v4, added npm caching, added permissions block
+- nightly-regression.yml: Applied same fixes plus preserved existing allure-report upload
+Notes: These changes address potential CI failures due to missing OS-level browser dependencies, improve performance via caching, and enhance debuggability by preserving test artifacts on failure. The workflows are ready to be tested via a push to GitHub.
