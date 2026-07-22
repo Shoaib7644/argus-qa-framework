@@ -245,9 +245,17 @@ npx playwright install
 - **Actions**:
   - Installs dependencies and Playwright browsers
   - Runs full test suite (`npx playwright test`)
+  - Generates Allure HTML report
+  - Deploys both Allure and Playwright reports to GitHub Pages
+  - Reports are available under:
+      - Run-specific: `https://shoaibahmed.github.io/argus-qa-framework/<run_number>/[allure-report|playwright-report]/index.html`
+      - Latest: `https://shoaibahmed.github.io/argus-qa-framework/[allure-report|playwright-report]/latest/index.html`
   - Uploads Allure results as an artifact named `allure-report` (retained for 30 days)
-- **Artifact Location**: After a workflow run, navigate to Actions → [workflow run] → Artifacts → `allure-report` to download and view the Allure report locally
-
+  - Uploads Playwright report as an artifact on failure (retained for 30 days)
+- **Artifact Location**: After a workflow run, navigate to Actions → [workflow run] → Artifacts → `allure-report` or `playwright-report` to download and view locally
+- **GitHub Pages**: The latest reports are always available at:
+        - Allure: `https://shoaibahmed.github.io/argus-qa-framework/allure-report/latest/index.html`
+        - Playwright: `https://shoaibahmed.github.io/argus-qa-framework/playwright-report/latest/index.html`
 ## ⚠️ Known Limitations
 
 Per PRODUCT.md's explicit out-of-scope definition, this framework intentionally omits:

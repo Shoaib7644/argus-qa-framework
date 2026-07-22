@@ -54,15 +54,43 @@ jobs:
           publish_dir: ./playwright-report
           destination_dir: ${{ github.run_number }}/playwright-report
           keep_files: true
+      - name: Deploy Allure Report (latest) to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          destination_dir: allure-report/latest
+          keep_files: true
+
+      - name: Deploy Playwright Report (latest) to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          destination_dir: playwright-report/latest
+          keep_files: true
 
       - name: Add summary
         run: |
           echo "## Test Reports" >> $GITHUB_STEP_SUMMARY
-          echo "| Report Type | URL |" >> $GITHUB_STEP_SUMMARY
-          echo "|-------------|-----|" >> $GITHUB_STEP_SUMMARY
-          echo "| Allure Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/allure-report/index.html |" >> $GITHUB_STEP_SUMMARY
-          echo "| Playwright Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/playwright-report/index.html |" >> $GITHUB_STEP_SUMMARY
+          echo "| Report Type | URL (Run) | URL (Latest) |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------------|-----------|--------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Allure Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/allure-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
+          echo "| Playwright Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/playwright-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/playwright-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          destination_dir: playwright-report/latest
+          keep_files: true
 
+      - name: Add summary
+        run: |
+          echo "## Test Reports" >> $GITHUB_STEP_SUMMARY
+          echo "| Report Type | URL (Run) | URL (Latest) |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------------|-----------|--------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Allure Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/allure-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
+          echo "| Playwright Report | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.run_number }}/playwright-report/index.html | https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/playwright-report/latest/index.html |" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
